@@ -46,7 +46,7 @@ button{
     background:#ff4d4d;
     color:white;
     position:absolute;
-    transition:0.15s;
+    transition:0.12s ease;
 }
 
 .hidden{
@@ -86,7 +86,7 @@ button{
 
 const noBtn = document.getElementById("noBtn");
 
-// BUTON KAÇMA FONKSİYONU
+// KAÇMA FONKSİYONU
 function moveButton(){
     const maxX = window.innerWidth - noBtn.offsetWidth;
     const maxY = window.innerHeight - noBtn.offsetHeight;
@@ -100,19 +100,12 @@ function moveButton(){
 
 // 💻 PC
 noBtn.addEventListener("mouseover", moveButton);
-noBtn.addEventListener("mousemove", moveButton);
 
-// 📱 TELEFON (ASIL FIX)
-noBtn.addEventListener("touchmove", () => {
-    moveButton();
-});
+// 📱 TELEFON (ULTRA FIX)
+document.addEventListener("touchstart", moveButton);
+document.addEventListener("touchmove", moveButton);
 
-noBtn.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    moveButton();
-});
-
-// EVET BUTONU
+// EVET
 function accept(){
     document.getElementById("main").classList.add("hidden");
     document.getElementById("final").classList.remove("hidden");
